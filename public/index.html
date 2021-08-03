@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JUEGO DEL GATO</title>
+
+
+</head>
+
+<body style="background-color: cornflowerblue;">
+<center>
+    <h1>Escribeme algo</h1>
+
+    <div class="card" style="width: 18rem; background-color: darkcyan;">
+
+        <h3>Mensajes</h3>
+        <ul id="idMsj"></ul>
+
+    </div>
+
+</center>
+
+</ul>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.1.3/socket.io.js"
+        integrity="sha512-PU5S6BA03fRv1Q5fpwXjg5nlRrgdoguZ74urFInkbABMCENyx5oP3hrDzYMMPh3qdLdknIvrGj3yqZ4JuU7Nag=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script>
+        const socket = io('http://localhost:3000/')
+        const idMsj = document.querySelector('#idMsj')
+
+
+        socket.on('msj-output-client', (data) => {
+            console.log(data);
+            idMsj.innerHTML += `<li>${data.txt}</li>`;
+        });
+
+    </script>
+
+</body>
+
+<footer>
+
+</footer>
+
+</html>
